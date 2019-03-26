@@ -273,6 +273,17 @@ class Mageinn_AdminExtra_Model_Observer
                     $afterElementHtml = $block->getElement()->getAfterElementHtml();
                     $afterElementHtml .= $this->_getAdditionalElementHtml($block->getElement());
                     $block->getElement()->setAfterElementHtml($afterElementHtml);
+                } else if ($block instanceof Mage_Adminhtml_Block_Widget_Form_Renderer_Fieldset_Element) {
+                    $block->setTemplate('mageinn/adminextra/catalog/form/renderer/fieldset/element.phtml');
+                    if($block->getElement()->getEntityAttribute())
+                    {
+                        $block->getElement()->getForm()->getDataObject()->setId('empty');
+                        $block->getElement()->getForm()->getDataObject()->setStoreId($storeId);
+                        $block->getElement()->getForm()->getDataObject()->setExistsStoreValueFlag($block->getElement()->getEntityAttribute()->getAttributeCode());
+                        $afterElementHtml = $block->getElement()->getAfterElementHtml();
+                        $afterElementHtml .= $this->_getAdditionalElementHtml($block->getElement());
+                        $block->getElement()->setAfterElementHtml($afterElementHtml);
+                    }
                 }
                 
                 // Add Images Tab
