@@ -54,4 +54,49 @@ class Mageinn_AdminExtra_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return Mage::getStoreConfigFlag(self::XML_PATH_DUPLICATE_URL_CLEAR);
     }
+
+    /**
+     * @return bool
+     */
+    public function canDisplayUseDefault($_element){
+        if ($attribute = $_element->getEntityAttribute()) {
+            if (!$attribute->isScopeGlobal()
+                && $_element->getForm()->getDataObject()
+                && $_element->getForm()->getDataObject()->getId()
+                && $_element->getForm()->getDataObject()->getStoreId()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function usedDefault($_element)
+    {
+        return is_null($_element->getForm()->getDataObject()->getAttributeDefaultValue($_element->getEntityAttribute()->getAttributeCode()));
+    }
+    
+    /**
+     * @return string
+     */
+    public function getScopeLabel($_element)
+    {
+        $html = '';
+        $attribute = $_element->getEntityAttribute();
+        if (!$attribute || Mage::app()->isSingleStoreMode() || $attribute->getFrontendInput()=='gallery') {
+            return $html;
+        }
+        if ($attribute->isScopeGlobal()) {
+            $html.= '[GLOBAL]';
+        }
+        elseif ($attribute->isScopeWebsite()) {
+            $html.= '[WEBSITE]';
+        }
+        elseif ($attribute->isScopeStore()) {
+            $html.= '[STORE VIEW]';
+        }
+        return $html;
+    }
 }
