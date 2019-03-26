@@ -77,8 +77,9 @@ class Mageinn_AdminExtra_Helper_Data extends Mage_Core_Helper_Abstract
     {
         return is_null($_element->getForm()->getDataObject()->getAttributeDefaultValue($_element->getEntityAttribute()->getAttributeCode()));
     }
-    
+
     /**
+     * Get Scope Label
      * @return string
      */
     public function getScopeLabel($_element)
