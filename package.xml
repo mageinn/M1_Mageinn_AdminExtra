@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<package>
+    <name>Mageinn_AdminExtra</name>
+    <version>1.2.0</version>
+    <stability>stable</stability>
+    <license uri="http://opensource.org/licenses/osl-3.0.php">Open Software License (OSL 3.0)</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>This module allows you to set "Use Default Value" option for any attributes and images on a store level using admin mass action.</summary>
+    <description>This module allows you to set "Use Default Value" option for any attributes and images on a store level using admin mass action.</description>
+    <notes>      ==== 1.2.0 ====&#xD;
+&#xD;
+      === New ===&#xD;
+      New: Added new feature to mass assign/remove multiple attributes to/from multiple attribute sets&#xD;
+&#xD;
+      ==== 1.1.1 ====&#xD;
+&#xD;
+      === Fixes ===&#xD;
+      Fixed: Error when copying attribute values with single quote&#xD;
+&#xD;
+&#xD;
+&#xD;
+      ==== 1.1.0 ====&#xD;
+&#xD;
+      === New ===&#xD;
+      New: Added new feature to copy the default value of any attribute into a particular store view&#xD;
+&#xD;
+      ==== 1.0.4 ====&#xD;
+&#xD;
+      === New ===&#xD;
+      New: Added new feature to mass update URL Key&#xD;
+&#xD;
+&#xD;
+      ==== 1.0.3 ====&#xD;
+&#xD;
+      === New ===&#xD;
+      New: Added new feature to mass update attribute options using import/export&#xD;
+&#xD;
+&#xD;
+      ==== 1.0.2 ====&#xD;
+&#xD;
+      === Fixes ===&#xD;
+      Fixed: Remove notice by checking if the variable is set before using it&#xD;
+&#xD;
+&#xD;
+&#xD;
+      ==== 1.0.1 ====&#xD;
+&#xD;
+      === Fixes ===&#xD;
+      Fixed: Controller name check logic in observer&#xD;
+&#xD;
+&#xD;
+&#xD;
+      ==== 1.0.0 ====&#xD;
+&#xD;
+      Initial Release&#xD;
+&#xD;
+&#xD;
+   </notes>
+    <authors><author><name>Mageinn</name><user>Mageinn</user><email>sales@mageinn.com</email></author></authors>
+    <date>2017-05-29</date>
+    <time>17:27:31</time>
+    <contents><target name="magecommunity"><dir name="Mageinn"><dir name="AdminExtra"><dir name="Block"><dir name="Adminhtml"><dir name="Catalog"><dir name="Product"><dir name="Action"><dir name="Attribute"><file name="Tab.php" hash="66b126f742b403ea91bb9fc89bde645a"/></dir></dir></dir></dir><dir name="Set"><dir name="Edit"><file name="Form.php" hash="4de4ffbe4c051c5cf84bd7c9890fa85a"/></dir><file name="Edit.php" hash="5ba43755c2898ff1776b9a2237af2c1d"/></dir></dir></dir><dir name="Helper"><file name="Attribute.php" hash="8e96d35e1903298e5dcc22426f08fcaa"/><file name="Data.php" hash="e0443b0b0ba18b0a3cdec0f214355746"/></dir><dir name="Model"><dir name="Attribute"><file name="Option.php" hash="90506b3069cbd7883447bb7d48a28f58"/></dir><file name="Observer.php" hash="bd3f7c35b71dafdc8c7ec11b3cc96d63"/></dir><dir name="controllers"><dir name="Adminhtml"><file name="ExtraController.php" hash="ec623f499bc15d777366789df8c23e4f"/></dir></dir><dir name="etc"><file name="config.xml" hash="06f51f8b30d84c40ed0b73f6dd7904f0"/><file name="system.xml" hash="5ce6eea82654479a3ea5f2d8857ca40a"/></dir></dir><dir name="Core"><dir name="Helper"><file name="Data.php" hash="4176b5c70272c606e72e09beedd93c50"/></dir><dir name="Model"><file name="Feed.php" hash="9a43487d0a85cdc012ab21503e28afad"/><file name="Observer.php" hash="1a12bf3f544c8d57eb40c0817aeb7d0a"/><dir name="Resource"><file name="Setup.php" hash="eeab6b562f98e4dd9bf5900f45816fe6"/></dir></dir><dir name="controllers"><file name="DebugController.php" hash="b31871ed9a3cf31da4bde43c2ad97340"/></dir><dir name="etc"><file name="config.xml" hash="08687256bb3f98d11280d4e3d5dae2ff"/><file name="system.xml" hash="ed8967e7ae22433dfe7873f75630c56d"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Mageinn_AdminExtra.xml" hash="23e8bd50979a6533ec27d2ea7b441d40"/><file name="Mageinn_Core.xml" hash="7063b2d97ab70bf07545e06be8c9126e"/></dir></target><target name="magedesign"><dir name="adminhtml"><dir name="default"><dir name="default"><dir name="template"><dir name="mageinn"><dir name="adminextra"><dir name="catalog"><dir name="product"><dir name="action"><dir name="attribute"><file name="tab.phtml" hash="f1614a33765c767e5976cd062bf39bd7"/></dir></dir><dir name="attribute"><file name="options.phtml" hash="f5833d6e62b417eb42f286fdf18e1bb3"/></dir></dir></dir></dir></dir></dir><dir name="layout"><dir name="mageinn"><file name="core.xml" hash="55992c5054f79933abf4aa6f659ec6ca"/></dir></dir></dir></dir></dir><dir name="frontend"><dir name="base"><dir name="default"><dir name="layout"><dir name="mageinn"><file name="core.xml" hash="1d9c5e20e8f7550830272abed2fff5fa"/></dir></dir></dir></dir></dir></target><target name="mageweb"><dir name="js"><dir name="mageinn"><dir name="jquery"><file name="jquery.min.js" hash="cbb11b58473b2d672f4ed53abbb67336"/><file name="jquery.noconflict.js" hash="6fdbddd817f042768971edb17be1b3c5"/></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.3.0</min><max>7.0.6</max></php></required></dependencies>
+</package>

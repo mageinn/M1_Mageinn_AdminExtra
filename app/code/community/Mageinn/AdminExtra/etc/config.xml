@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Mageinn_AdminExtra extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Mageinn
+ * @package     Mageinn_AdminExtra
+ * @copyright   Copyright (c) 2016 Mageinn. (http://mageinn.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * @category   Mageinn
+ * @package    Mageinn_AdminExtra
+ * @author     Mageinn
+ */
+-->
+<config>
+    <modules>
+        <Mageinn_AdminExtra>
+            <version>1.2.0</version>
+        </Mageinn_AdminExtra>
+    </modules>
+    <global>
+        <models>
+            <mageinn_adminextra>
+                <class>Mageinn_AdminExtra_Model</class>
+            </mageinn_adminextra>
+        </models>
+        <blocks>
+            <mageinn_adminextra>
+                <class>Mageinn_AdminExtra_Block</class>
+            </mageinn_adminextra>
+        </blocks>
+        <helpers>
+            <mageinn_adminextra>
+                <class>Mageinn_AdminExtra_Helper</class>
+            </mageinn_adminextra>
+            <adminhtml>
+                <rewrite>
+                    <catalog_product_edit_action_attribute>Mageinn_AdminExtra_Helper_Attribute</catalog_product_edit_action_attribute>    
+                </rewrite>
+            </adminhtml>
+        </helpers>
+        <events>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <mageinn_adminextra>
+                        <class>mageinn_adminextra/observer</class>
+                        <method>preDispatch</method>
+                    </mageinn_adminextra>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
+        </events>
+    </global>
+    
+     <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <mageinn_adminextra after="Mage_Adminhtml">Mageinn_AdminExtra_Adminhtml</mageinn_adminextra>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <mageinn_adminextra translate="title" module="mageinn_adminextra">
+                                            <title>Mageinn AdminExtra</title>
+                                        </mageinn_adminextra>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <events>
+            <catalog_product_attribute_update_before>
+                <observers>
+                    <mageinn_adminextra>
+                        <type>singleton</type>
+                        <class>mageinn_adminextra/observer</class>
+                        <method>detectProductAttributeChanges</method>
+                    </mageinn_adminextra>
+                </observers>
+            </catalog_product_attribute_update_before>
+            <core_block_abstract_to_html_before>
+                <observers>
+                    <mageinn_adminextra>
+                        <class>mageinn_adminextra/observer</class>
+                        <method>htmlBefore</method>
+                    </mageinn_adminextra>
+                </observers>
+            </core_block_abstract_to_html_before>
+            <core_block_abstract_prepare_layout_after>
+                <observers>
+                    <mageinn_adminextra>
+                        <class>mageinn_adminextra/observer</class>
+                        <method>layoutAfter</method>
+                    </mageinn_adminextra>
+                </observers>
+            </core_block_abstract_prepare_layout_after>
+            <core_block_abstract_prepare_layout_before>
+                <observers>
+                    <mageinn_adminextra>
+                        <class>mageinn_adminextra/observer</class>
+                        <method>layoutBefore</method>
+                    </mageinn_adminextra>
+                </observers>
+            </core_block_abstract_prepare_layout_before>
+            <catalog_model_product_duplicate>
+                <observers>
+                    <mageinn_adminextra>
+                        <class>mageinn_adminextra/observer</class>
+                        <method>duplicateProduct</method>
+                    </mageinn_adminextra>
+                </observers>
+            </catalog_model_product_duplicate>
+        </events>
+    </adminhtml>
+    
+    <default>
+        <mageinn_adminextra>
+            <general>
+                <enabled>0</enabled>
+            </general>
+        </mageinn_adminextra>
+    </default>
+    
+    <!--<stores>
+        <admin>
+            <dev>
+                <debug>
+                    <template_hints>1</template_hints>
+                    <template_hints_blocks>1</template_hints_blocks>
+                </debug>
+            </dev>
+        </admin>
+    </stores>-->
+
+</config>

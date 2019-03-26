@@ -1,0 +1,75 @@
+<?php
+/**
+ * Mageinn_AdminExtra extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category    Mageinn
+ * @package     Mageinn_AdminExtra
+ * @copyright   Copyright (c) 2014 Mageinn. (http://mageinn.com/)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+
+/**
+ * @category   Mageinn
+ * @package    Mageinn_AdminExtra
+ * @author     Mageinn
+ */
+?>
+<ul class="messages">
+    <li class="notice-msg">
+        <ul>
+            <li>
+                <label><?php echo $this->__("File format that you want to export data to: "); ?></label>
+                <select name="type" id="type">
+                    <option value="xml"><?php echo $this->__(".XML") ?></option>
+                    <option value="csv"><?php echo $this->__(".CSV") ?></option>
+                </select> 
+                <button onclick="doExportOpts(this)" class="scalable save" type="button">
+                    <span><?php echo $this->__("Export") ?></span></button>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<div class="entity-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__("Import Options"); ?></h4>
+    </div>
+    <div class="fieldset fieldset-wide">
+        <div class="hor-scroll">
+            <form method="POST" action="<?php echo $this->getUrl('adminhtml/extra/import')?>" enctype="multipart/form-data" id="import_options">
+                <input type="hidden" name="attribute_id" value="<?php echo Mage::registry('entity_attribute')->getId() ?>" />
+                <input type="hidden" name="form_key" value="<?php echo $this->getFormKey() ?>" />
+                <input type="file" name="imp_opt" /> 
+                <br /><br />
+                <button class="scalable save" type="submit"><span><?php echo $this->__("Import"); ?></span></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<ul class="messages">
+    <li class="notice-msg">
+        <ul>
+            <li>
+                <?php echo $this->__("Allowed File Formats: CSV, XML. Please use the export file to add or update options."); ?>
+            </li>
+        </ul>
+    </li>
+</ul>
+
+<script type="text/javascript">
+function doExportOpts(element) {
+    window.location.href = '<?php echo Mage::helper("adminhtml")->getUrl('adminhtml/extra/export', array('attribute_id' => Mage::registry('entity_attribute')->getId())) ?>type/' + $('type').value;
+}
+</script>

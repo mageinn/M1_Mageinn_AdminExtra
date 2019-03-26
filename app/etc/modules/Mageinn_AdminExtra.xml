@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Mageinn_AdminExtra>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Mageinn_AdminExtra>
+    </modules>
+</config>
