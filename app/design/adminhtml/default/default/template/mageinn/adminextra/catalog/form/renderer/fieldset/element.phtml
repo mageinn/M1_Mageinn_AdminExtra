@@ -30,50 +30,9 @@
  */
 ?>
 <?php $_element = $this->getElement(); ?>
+<?php $helper = Mage::helper('mageinn_adminextra'); ?>
 <?php
-if (!function_exists('canDisplayUseDefault')) {
-    function canDisplayUseDefault($_element){
-        if ($attribute = $_element->getEntityAttribute()) {
-            if (!$attribute->isScopeGlobal()
-                && $_element->getForm()->getDataObject()
-                && $_element->getForm()->getDataObject()->getId()
-                && $_element->getForm()->getDataObject()->getStoreId()) {
-                return true;
-            }
-        }
-        return false;
-    }
-}
-
-if (!function_exists('usedDefault')) {
-    function usedDefault($_element)
-    {
-        return is_null($_element->getForm()->getDataObject()->getAttributeDefaultValue($_element->getEntityAttribute()->getAttributeCode()));
-    }
-}
-if (!function_exists('getScopeLabel')) {
-    function getScopeLabel($_element)
-    {
-        $html = '';
-        $attribute = $_element->getEntityAttribute();
-        if (!$attribute || Mage::app()->isSingleStoreMode() || $attribute->getFrontendInput()=='gallery') {
-            return $html;
-        }
-        if ($attribute->isScopeGlobal()) {
-            $html.= '[GLOBAL]';
-        }
-        elseif ($attribute->isScopeWebsite()) {
-            $html.= '[WEBSITE]';
-        }
-        elseif ($attribute->isScopeStore()) {
-            $html.= '[STORE VIEW]';
-        }
-        
-        return $html;
-    }
-}
-
-if (canDisplayUseDefault($_element) && usedDefault($_element)) {
+if ($helper->canDisplayUseDefault($_element) && $helper->usedDefault($_element)) {
     $_element->setDisabled(true);
 }
 ?>
@@ -95,10 +54,10 @@ $elementToggleCode = $_element->getToggleCode() ? $_element->getToggleCode()
                 <p class="note"><?php echo $_element->getNote() ?></p>
             <?php endif; ?>
         </td>
-        <td class="scope-label"><span class="nobr"><?php echo getScopeLabel($_element) ?></span></td>
-        <?php if (canDisplayUseDefault($_element)): ?>
+        <td class="scope-label"><span class="nobr"><?php echo $helper->getScopeLabel($_element) ?></span></td>
+        <?php if ($helper->canDisplayUseDefault($_element)): ?>
             <td class="value use-default">
-                <input <?php if($_element->getReadonly()):?> disabled="disabled"<?php endif; ?> type="checkbox" name="use_default[]" id="<?php echo $_element->getHtmlId() ?>_default"<?php if (usedDefault($_element)): ?> checked="checked"<?php endif; ?> onclick="<?php echo $elementToggleCode; ?>" value="<?php echo $_element->getEntityAttribute()->getAttributeCode() ?>"/>
+                <input <?php if($_element->getReadonly()):?> disabled="disabled"<?php endif; ?> type="checkbox" name="use_default[]" id="<?php echo $_element->getHtmlId() ?>_default"<?php if ($helper->usedDefault($_element)): ?> checked="checked"<?php endif; ?> onclick="<?php echo $elementToggleCode; ?>" value="<?php echo $_element->getEntityAttribute()->getAttributeCode() ?>"/>
                 <label for="<?php echo $_element->getHtmlId() ?>_default" class="normal"><?php echo $this->__('Use Default Value') ?></label>
             </td>
         <?php endif; ?>
