@@ -17,7 +17,6 @@
  * @copyright   Copyright (c) 2016 Mageinn. (http://mageinn.com/)
  * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-
 /**
  * AdminExtra Helper
  *
@@ -27,16 +26,16 @@
  */
 class Mageinn_AdminExtra_Helper_Data extends Mage_Core_Helper_Abstract
 {
-    const XML_PATH_ENABLED                  = 'mageinn_adminextra/general/enabled';
-    const XML_PATH_DUPLICATE_IMAGES_CLEAR   = 'mageinn_adminextra/general/duplicate_images_clear';
-    const XML_PATH_DUPLICATE_URL_CLEAR      = 'mageinn_adminextra/general/duplicate_url_clear';
+    const XML_PATH_ENABLED = 'mageinn_adminextra/general/enabled';
+    const XML_PATH_DUPLICATE_IMAGES_CLEAR = 'mageinn_adminextra/general/duplicate_images_clear';
+    const XML_PATH_DUPLICATE_URL_CLEAR = 'mageinn_adminextra/general/duplicate_url_clear';
 
     /**
      * @return bool
      */
     public function isEnabled()
     {
-        return Mage::getStoreConfigFlag(self::XML_PATH_ENABLED);
+        return Mage::getStoreConfigFlag( self::XML_PATH_ENABLED );
     }
 
     /**
@@ -44,7 +43,7 @@ class Mageinn_AdminExtra_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function clearImagesFlag()
     {
-        return Mage::getStoreConfigFlag(self::XML_PATH_DUPLICATE_IMAGES_CLEAR);
+        return Mage::getStoreConfigFlag( self::XML_PATH_DUPLICATE_IMAGES_CLEAR );
     }
 
     /**
@@ -52,18 +51,19 @@ class Mageinn_AdminExtra_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function clearUrlFlag()
     {
-        return Mage::getStoreConfigFlag(self::XML_PATH_DUPLICATE_URL_CLEAR);
+        return Mage::getStoreConfigFlag( self::XML_PATH_DUPLICATE_URL_CLEAR );
     }
 
     /**
      * @return bool
      */
-    public function canDisplayUseDefault($_element){
-        if ($attribute = $_element->getEntityAttribute()) {
-            if (!$attribute->isScopeGlobal()
+    public function canDisplayUseDefault($_element)
+    {
+        if ( $attribute = $_element->getEntityAttribute() ) {
+            if ( ! $attribute->isScopeGlobal()
                 && $_element->getForm()->getDataObject()
                 && $_element->getForm()->getDataObject()->getId()
-                && $_element->getForm()->getDataObject()->getStoreId()) {
+                && $_element->getForm()->getDataObject()->getStoreId() ) {
                 return true;
             }
         }
@@ -75,28 +75,26 @@ class Mageinn_AdminExtra_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function usedDefault($_element)
     {
-        return is_null($_element->getForm()->getDataObject()->getAttributeDefaultValue($_element->getEntityAttribute()->getAttributeCode()));
+        return is_null( $_element->getForm()->getDataObject()->getAttributeDefaultValue( $_element->getEntityAttribute()->getAttributeCode() ) );
     }
-
+    
     /**
      * Get Scope Label
      * @return string
      */
     public function getScopeLabel($_element)
     {
-        $html = '';
+        $html      = '';
         $attribute = $_element->getEntityAttribute();
-        if (!$attribute || Mage::app()->isSingleStoreMode() || $attribute->getFrontendInput()=='gallery') {
+        if ( ! $attribute || Mage::app()->isSingleStoreMode() || $attribute->getFrontendInput() == 'gallery' ) {
             return $html;
         }
-        if ($attribute->isScopeGlobal()) {
-            $html.= '[GLOBAL]';
-        }
-        elseif ($attribute->isScopeWebsite()) {
-            $html.= '[WEBSITE]';
-        }
-        elseif ($attribute->isScopeStore()) {
-            $html.= '[STORE VIEW]';
+        if ( $attribute->isScopeGlobal() ) {
+            $html .= '[GLOBAL]';
+        } elseif ( $attribute->isScopeWebsite() ) {
+            $html .= '[WEBSITE]';
+        } elseif ( $attribute->isScopeStore() ) {
+            $html .= '[STORE VIEW]';
         }
         return $html;
     }
