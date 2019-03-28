@@ -1,5 +1,16 @@
 # AdminExtra for Magento® 1
 
+## Description
+
+It's very common that after a product is imported for a specific store, Magento unchecks "Use Default Config" for every attribute on that particular store level. Unfortunately there doesn't appear to be an option in Magento to reset the attribute's value back to "Use Default Config" for the mass action, "Update attributes".
+
+This extension allows you to reset/set the“Use Default Value” option for any attribute and image on a store level using admin mass action. There is also an added new feature that allows you to copy the default value of any attribute into a particular store view!
+
+### Features
+
+* Reset/Set "Use Default Value" for any attribute and images
+* Copy Default Value of any attribute into a speacific store view
+
 ## User Guide
 
 ### 1. Configuration
@@ -25,5 +36,4 @@ Select several products and choose “Update attributes” action from dropdown.
 
 Select Store View first and then set required “Use Default” checkboxes or “Copy from Default”.
 
-### 4. Enjoy it :)  
-If you have any issues with the module please raise a support ticket [here](https://mageinn.atlassian.net/servicedesk/customer/portal/1).
+### 4. Enjoy it :) 
